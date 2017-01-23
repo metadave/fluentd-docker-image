@@ -7,6 +7,7 @@ LABEL Description="Fluentd docker image" Vendor="Fluent Organization" Version="1
 # therefore an 'apk delete build*' has no effect
 RUN apk --no-cache add \
                    build-base \
+                   libffi-dev \
                    ca-certificates \
                    ruby \
                    ruby-irb \
@@ -15,6 +16,8 @@ RUN apk --no-cache add \
     gem install oj && \
     gem install json && \
     gem install fluentd -v 0.12.31 && \
+    gem install fluent-plugin-s3 && \
+    gem install fluent-plugin-systemd -v 0.1.0 && \
     apk del build-base ruby-dev && \
     rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
 
