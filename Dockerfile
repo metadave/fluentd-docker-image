@@ -30,7 +30,7 @@ RUN mkdir -p /fluentd/etc /fluentd/plugins
 
 RUN chown -R fluent:fluent /fluentd
 
-USER fluent
+USER root
 WORKDIR /home/fluent
 
 # Tell ruby to install packages as user
