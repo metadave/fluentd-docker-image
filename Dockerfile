@@ -16,8 +16,7 @@ RUN apk --no-cache add \
     gem install oj && \
     gem install json && \
     gem install fluentd -v 0.12.31 && \
-    gem install fluent-plugin-s3 && \
-    gem install fluent-plugin-systemd -v 0.1.0 && \
+    gem install fluent-plugin-syslog-tls && \
     apk del build-base ruby-dev && \
     rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
 
@@ -43,6 +42,8 @@ COPY fluent.conf /fluentd/etc/
 
 ENV FLUENTD_OPT=""
 ENV FLUENTD_CONF="fluent.conf"
+ENV PAPERTRAIL_HOST=""
+ENV PAPERTRAIL_PORT=""
 
 EXPOSE 24224 5140
 
